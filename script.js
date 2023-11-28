@@ -1,6 +1,6 @@
-  let gridSize = 100*100;
-  let penColor = rgb(255,255,255)
-  let backColor = rgb(0,0,0);
+  let gridSize = 25*25;
+  let penColor 
+  let backColor 
   let divArray
   
   //creats a div child
@@ -36,6 +36,12 @@ const docGridSize = document.querySelector('.pix');
 const input = document.querySelector('#slide');
 
 //clears a gird 
+function clearco(){
+    const divdelet = document.querySelectorAll('.child');
+    const arr = Array.from(divdelet);
+    arr.forEach(element => { element.remove();});
+    divArray=[];
+}
 function clear (){
     const divdelet = document.querySelectorAll('.child');
     const arr = Array.from(divdelet);
@@ -44,17 +50,16 @@ function clear (){
     gridSize=25*25;
     gridCreator();
     console.log(divArray);
+    draw();
 }
- 
-gridCreator();
-
 
 // when the range is fixed sets the grid
 input.addEventListener('input' , (event)=>{
- clear();
+ clearco();
  docGridSize.textContent=`${event.target.value}*${event.target.value}`;
  gridSize=event.target.value**2;
  gridCreator();
+ draw();
 })
 
 
@@ -76,10 +81,13 @@ backInput.addEventListener("input",(event)=>{
 
 
 //drawing with pen 
-
+function draw(){
 divArray.forEach((ele)=>{ele.addEventListener('mouseover',(event)=>{ele.style.backgroundColor = penColor;})})
-
+}
 
 // to erase
  const eraser = document.querySelector('#erase');
- eraser.onclick = ()=> {penColor = '#ffffff';}; 
+ eraser.onclick = ()=> {penColor = backColor;}; 
+
+ gridCreator();
+ draw();
