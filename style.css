@@ -1,0 +1,46 @@
+* {
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    flex-wrap: wrap;
+}
+button {
+    height: 30px;
+    width: 100px;
+    border: 1px solid aliceblue;
+}
+button:hover {
+    font-size: 22px;
+    border:2px solid aliceblue;
+    border-radius: 10px;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap : 20px;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 500px;
+    width: 500px;
+}
+.child {
+    border: aliceblue;
+}
+header {
+    font-size: 90px;
+    padding: 100px;
+}
+.container {
+    height: 500px;
+    width:500px;
+    flex-shrink: 1;
+    background-color: aliceblue;
+}
