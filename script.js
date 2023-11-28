@@ -1,10 +1,13 @@
   let gridSize = 100*100;
+  let penColor = rgb(255,255,255)
+  let backColor = rgb(0,0,0);
+  let divArray
   
   //creats a div child
   function  divcreator(){
   const gridChild = document.createElement('div');
   gridChild.setAttribute('style',
-                         `background-color : white; 
+                         `background-color : #ffffff; 
                           border-top : 1px solid black ; 
                           border-left : 1px solid black ; 
                           height: ${500/Math.sqrt(gridSize)-1}px;
@@ -21,7 +24,12 @@ const parent = document.querySelector('.container');
 function gridCreator(){
 for (let i=0; i<gridSize ; i++){
   parent.appendChild(divcreator());
-}}
+}
+const childlist=document.querySelectorAll('.child');
+divArray=Array.from(childlist);
+console.log(divArray);
+}
+
 
 
 const docGridSize = document.querySelector('.pix');
@@ -31,12 +39,14 @@ const input = document.querySelector('#slide');
 function clear (){
     const divdelet = document.querySelectorAll('.child');
     const arr = Array.from(divdelet);
-    arr.forEach(element => { element.remove();
-        
-    });
-    
+    arr.forEach(element => { element.remove();});
+    divArray=[];
+    gridSize=25*25;
+    gridCreator();
+    console.log(divArray);
 }
  
+gridCreator();
 
 
 // when the range is fixed sets the grid
@@ -51,4 +61,25 @@ input.addEventListener('input' , (event)=>{
 const clearbtn = document.querySelector('.btn');
 clearbtn.onclick = () => { clear ();};
 
+// the pen gets color
+const penInput = document.querySelector('#pen');
+penInput.addEventListener("input", (event)=>{
+     penColor=event.target.value;
+})
 
+// the sheets gets color
+const backInput = document.querySelector('#back');
+backInput.addEventListener("input",(event)=>{
+    backColor=event.target.value;
+    divArray.forEach(ele =>{ele.style.backgroundColor = backColor});
+})
+
+
+//drawing with pen 
+
+divArray.forEach((ele)=>{ele.addEventListener('mouseover',(event)=>{ele.style.backgroundColor = penColor;})})
+
+
+// to erase
+ const eraser = document.querySelector('#erase');
+ eraser.onclick = ()=> {penColor = '#ffffff';}; 
