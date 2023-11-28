@@ -41,6 +41,12 @@ header {
 .container {
     height: 500px;
     width:500px;
-    flex-shrink: 1;
+    display: flex;
+    flex:1;
+    flex-wrap: wrap;
+    
     background-color: aliceblue;
+}
+.btn {
+    align-self: center;
 }
