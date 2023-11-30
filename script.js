@@ -80,10 +80,19 @@ backInput.addEventListener("input",(event)=>{
 })
 
 
+
+
 //drawing with pen 
 function draw(){
-divArray.forEach((ele)=>{ele.addEventListener('mouseover',(event)=>{ele.style.backgroundColor = penColor;})})
+divArray.forEach((ele)=>{ele.addEventListener('mousedown',(event)=>{
+                                                                  ele.style.backgroundColor = penColor;  
+                                                                  divArray.forEach((element)=>{
+                                                                    element.addEventListener('mouseover',()=>{
+                                                                    element.style.backgroundColor = penColor;})
+                                                                  })})})
 }
+
+
 
 // to erase
 const eraser = document.querySelector('#erase');
